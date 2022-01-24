@@ -19,6 +19,7 @@ def start(link, chat_id):
         P = re.compile("\"id\":\"(\\d+)\"")
         videoId = P.findall(html)
         api = TikTokAPI()
+        print(videoId)
         filename = str(chat_id).replace('-', '') + '_' + videoId[0] + ".mp4"
         api.downloadVideoById(videoId[0], filename)
         return filename
@@ -74,7 +75,7 @@ if __name__ == '__main__':
             else:
                 f.close()
                 f = open(str(m.chat.id).strip().replace('-', '') + '.txt', 'a+')
-                f.writelines(m.from_user.username + '\n')
+                f.writelines('\n' + m.from_user.username)
                 f.close()
                 bot.reply_to(m, 'Добавлены в список')
 
