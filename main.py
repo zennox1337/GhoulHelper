@@ -19,6 +19,7 @@ def start(link, chat_id):
         P = re.compile("\"id\":\"(\\d+)\"")
         videoId = P.findall(html)
         api = TikTokAPI()
+        print(html)
         print(videoId)
         filename = str(chat_id).replace('-', '') + '_' + videoId[0] + ".mp4"
         api.downloadVideoById(videoId[0], filename)
